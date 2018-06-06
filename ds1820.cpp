@@ -18,7 +18,7 @@
 using namespace pxt;
 
 namespace DS1820 {
-    MicroBitPin pin2 = uBit.io.P1;
+    MicroBitPin pin2 = uBit.io.P2;
     MicroBitPin pin1 = uBit.io.P1;
 
     uint8_t init() {
