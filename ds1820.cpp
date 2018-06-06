@@ -31,20 +31,6 @@ namespace DS1820 {
         return b;
     }
 
-    void sendZero() {
-        WritePin.setDigitalValue(0);
-        for (volatile uint8_t i = 1; i < 75; i++);
-        WritePin.setDigitalValue(1);
-        for (volatile uint8_t i = 1; i < 6; i++);
-    }
-
-    void sendOne() {
-        WritePin.setDigitalValue(0);
-        for (volatile uint8_t i = 1; i < 1; i++);
-        WritePin.setDigitalValue(1);
-        for (volatile uint8_t i = 1; i < 80; i++);
-    }
-
     void writeBit(int b) {
         int delay1, delay2;
         if (b == 1) {
@@ -60,16 +46,6 @@ namespace DS1820 {
         for (uint8_t i = 1; i < delay2; i++);
     }
 
-    void sendskip() {
-        writeBit(0);
-        writeBit(0);
-        writeBit(1);
-        writeBit(1);
-        writeBit(0);
-        writeBit(0);
-        writeBit(1);
-        writeBit(1);
-    }
 
     void writeByte(int byte) {
         int i;
@@ -129,5 +105,4 @@ namespace DS1820 {
         int16_t temp = (b2 << 8 | b1);
         return temp * 100 / 16;
     }
- 
 }
