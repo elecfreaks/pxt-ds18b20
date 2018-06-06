@@ -18,13 +18,13 @@
 using namespace pxt;
 
 namespace DS1820 {
-    MicroBitPin WritePin = uBit.io.P2;
+    //MicroBitPin WritePin = uBit.io.P2;
     MicroBitPin ReadPin = uBit.io.P1;
 
     uint8_t init() {
-        WritePin.setDigitalValue(0);
+        ReadPin.setDigitalValue(0);
         for (volatile uint16_t i = 0; i < 600; i++);
-        WritePin.setDigitalValue(1);
+        ReadPin.setDigitalValue(1);
         for (volatile uint8_t i = 0; i < 30; i++);
         int b = ReadPin.getDigitalValue();
         for (volatile uint16_t i = 0; i < 600; i++);
@@ -40,9 +40,9 @@ namespace DS1820 {
             delay1 = 75;
             delay2 = 6;
         }
-        WritePin.setDigitalValue(0);
+        ReadPin.setDigitalValue(0);
         for (uint8_t i = 1; i < delay1; i++);
-        WritePin.setDigitalValue(1);
+        ReadPin.setDigitalValue(1);
         for (uint8_t i = 1; i < delay2; i++);
     }
 
@@ -61,8 +61,8 @@ namespace DS1820 {
 
     int readBit() {
         volatile int i;
-        WritePin.setDigitalValue(0);
-        WritePin.setDigitalValue(1);
+        ReadPin.setDigitalValue(0);
+        ReadPin.setDigitalValue(1);
         for (i = 1; i < 20; i++);
         int b = ReadPin.getDigitalValue();
         for (i = 1; i < 60; i++);
