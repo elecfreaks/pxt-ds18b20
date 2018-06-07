@@ -20,7 +20,7 @@ using namespace pxt;
 namespace DS1820 {
     MicroBitPin pin2 = uBit.io.P2;
     MicroBitPin pin1 = uBit.io.P1;
-
+    MicroBit uBit;
     uint8_t init() {
         pin2.setDigitalValue(0);
         for (volatile uint16_t i = 0; i < 600; i++);
@@ -100,7 +100,8 @@ namespace DS1820 {
         writeByte(0xBE);
         int b1 = readByte();
         int b2 = readByte();
-
+        uBit.serial.printf("b1 : %d\n",b1);
+        uBit.serial.printf("b2 : %d\n",b2);
         int16_t temp = (b2 << 8 | b1);
         return temp * 100 / 16;
     }
