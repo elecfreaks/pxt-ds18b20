@@ -91,7 +91,7 @@ namespace DS1820 {
     }
 
     //%
-    int16_t Temperature() {
+    float Temperature() {
         init();
         writeByte(0xCC);
         convert();
@@ -102,8 +102,8 @@ namespace DS1820 {
         int b2 = readByte();
         uBit.serial.printf("b1 : %d\n",b1);
         uBit.serial.printf("b2 : %d\n",b2);
-        int16_t temp = (b2 << 8 | b1);
-        return temp * 100 / 16;
+        int16_t temp = (b2 << 8 | b1)*100/16;
+        return temp;
     }
  
 }
