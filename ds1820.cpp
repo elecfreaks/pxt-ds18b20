@@ -100,8 +100,6 @@ namespace DS1820 {
         writeByte(0xBE);
         int b1 = readByte();
         int b2 = readByte();
-        uBit.serial.printf("b1 : %d\n",b1);
-        uBit.serial.printf("b2 : %d\n",b2);
         int16_t temp = (b2 << 8 | b1)*100/16;
         return temp;
     }
