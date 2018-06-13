@@ -83,7 +83,7 @@ class microbitp : public MicroBitComponent
     }
 };
 
-
+namespace DS1820 {
 MicroBit uBit;
 microbitp  pin0(7, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
 microbitp  pin1(8, MICROBIT_PIN_P1, PIN_CAPABILITY_ALL);
@@ -172,6 +172,7 @@ uint16_t Temperature() {
 //uBit.serial.printf("1: %d\n",b1);
 //uBit.serial.printf("2: %d\n",b2);
     return temp;
+}
 }
 /*
 int main() {
