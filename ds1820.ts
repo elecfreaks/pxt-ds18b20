@@ -29,4 +29,5 @@ namespace DS1820 {
         // Fake function for simulator
         return 0
     }
+    
 }
