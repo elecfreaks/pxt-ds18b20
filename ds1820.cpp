@@ -5,6 +5,7 @@
 #include "pxt.h"
 using namespace pxt;
 namespace DS1820 {
+  
 class microbitp : public MicroBitComponent
 {
   public:
@@ -162,14 +163,19 @@ class microbitp : public MicroBitComponent
 
   //%
   uint16_t Temperature() {
+      uBit.serial.printf("1");
       init();
+      uBit.serial.printf("1");
       writeByte(0xCC);
+      uBit.serial.printf("1");
       convert();
+      uBit.serial.printf("1");
       init();
       writeByte(0xCC);
       writeByte(0xBE);
       int b1 = readByte();
       int b2 = readByte();
+      uBit.serial.printf("1");
       uint16_t temp = (b2 << 8 | b1)*100/16;
   //uBit.serial.printf("1: %d\n",b1);
   //uBit.serial.printf("2: %d\n",b2);
