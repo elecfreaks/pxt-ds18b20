@@ -4,14 +4,14 @@
 #include <math.h>
 #include "pxt.h"
 using namespace pxt;
-
+namespace DS1820 {
 class microbitp : public MicroBitComponent
 {
   public:
     void *pin;
     PinCapability capability;
     uint8_t pullMode;
-	PinName name;
+    PinName name;
 
     void disconnect(){
         if (status & IO_STATUS_DIGITAL_IN)
@@ -85,7 +85,7 @@ class microbitp : public MicroBitComponent
     }
 };
 
-namespace DS1820 {
+
   MicroBit uBit;
   microbitp  pin0(7, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
   microbitp  pin1(8, MICROBIT_PIN_P1, PIN_CAPABILITY_ALL);
