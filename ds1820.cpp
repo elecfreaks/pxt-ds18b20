@@ -1,5 +1,7 @@
 #include "MicroBit.h"
 #include "TimedInterruptIn.h"
+#include "pxt.h"
+using namespace pxt;
 
 class microbitp : public MicroBitComponent
 {
