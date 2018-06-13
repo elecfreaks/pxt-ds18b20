@@ -1,5 +1,7 @@
 #include "MicroBit.h"
 #include "TimedInterruptIn.h"
+#include <cstdint>
+#include <math.h>
 #include "pxt.h"
 using namespace pxt;
 
@@ -84,95 +86,95 @@ class microbitp : public MicroBitComponent
 };
 
 namespace DS1820 {
-MicroBit uBit;
-microbitp  pin0(7, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
-microbitp  pin1(8, MICROBIT_PIN_P1, PIN_CAPABILITY_ALL);
-microbitp  pin2(9, MICROBIT_PIN_P2, PIN_CAPABILITY_ALL);
+  MicroBit uBit;
+  microbitp  pin0(7, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
+  microbitp  pin1(8, MICROBIT_PIN_P1, PIN_CAPABILITY_ALL);
+  microbitp  pin2(9, MICROBIT_PIN_P2, PIN_CAPABILITY_ALL);
 
 
-uint8_t init() {
-    pin1.setDigitalValue(0);
-    for (volatile uint16_t i = 0; i < 600; i++);
-    pin1.setDigitalValue(1);
-    for (volatile uint8_t i = 0; i < 30; i++);
-    int b = pin1.getDigitalValue();
-    for (volatile uint16_t i = 0; i < 600; i++);
-    return b;
-}
+  uint8_t init() {
+      pin1.setDigitalValue(0);
+      for (volatile uint16_t i = 0; i < 600; i++);
+      pin1.setDigitalValue(1);
+      for (volatile uint8_t i = 0; i < 30; i++);
+      int b = pin1.getDigitalValue();
+      for (volatile uint16_t i = 0; i < 600; i++);
+      return b;
+  }
 
-void writeBit(int b) {
-    int delay1, delay2;
-    if (b == 1) {
-        delay1 = 1;
-        delay2 = 80;
-    } else {
-        delay1 = 75;
-        delay2 = 6;
-    }
-    pin1.setDigitalValue(0);
-    for (uint8_t i = 1; i < delay1; i++);
-    pin1.setDigitalValue(1);
-    for (uint8_t i = 1; i < delay2; i++);
-}
+  void writeBit(int b) {
+      int delay1, delay2;
+      if (b == 1) {
+          delay1 = 1;
+          delay2 = 80;
+      } else {
+          delay1 = 75;
+          delay2 = 6;
+      }
+      pin1.setDigitalValue(0);
+      for (uint8_t i = 1; i < delay1; i++);
+      pin1.setDigitalValue(1);
+      for (uint8_t i = 1; i < delay2; i++);
+  }
 
-void writeByte(int byte) {
-    int i;
-    for (i = 0; i < 8; i++) {
-        if (byte & 1) {
-            writeBit(1);
-        } else {
-            writeBit(0);
-        }
-        byte = byte >> 1;
-    }
-}
+  void writeByte(int byte) {
+      int i;
+      for (i = 0; i < 8; i++) {
+          if (byte & 1) {
+              writeBit(1);
+          } else {
+              writeBit(0);
+          }
+          byte = byte >> 1;
+      }
+  }
 
-int readBit() {
-    volatile int i;
-    pin1.setDigitalValue(0);
-    pin1.setDigitalValue(1);
-    int b = pin1.getDigitalValue();
-    for (i = 1; i < 60; i++);
-    return b;
-}
+  int readBit() {
+      volatile int i;
+      pin1.setDigitalValue(0);
+      pin1.setDigitalValue(1);
+      int b = pin1.getDigitalValue();
+      for (i = 1; i < 60; i++);
+      return b;
+  }
 
-int convert() {
-    volatile int i;
-    int j;
-    writeByte(0x44);
-    for (j = 1; j < 1000; j++) {
-        for (i = 1; i < 900; i++) {
-    };
-    if (readBit() == 1)
-        break;
-    };
-    return (j);
-}
+  int convert() {
+      volatile int i;
+      int j;
+      writeByte(0x44);
+      for (j = 1; j < 1000; j++) {
+          for (i = 1; i < 900; i++) {
+      };
+      if (readBit() == 1)
+          break;
+      };
+      return (j);
+  }
 
-int readByte() {
-    int byte = 0;
-    int i;
-    for (i = 0; i < 8; i++) {
-        byte = byte | readBit() << i;
-    };
-    return byte;
-}
+  int readByte() {
+      int byte = 0;
+      int i;
+      for (i = 0; i < 8; i++) {
+          byte = byte | readBit() << i;
+      };
+      return byte;
+  }
 
-//%
-uint16_t Temperature() {
-    init();
-    writeByte(0xCC);
-    convert();
-    init();
-    writeByte(0xCC);
-    writeByte(0xBE);
-    int b1 = readByte();
-    int b2 = readByte();
-    uint16_t temp = (b2 << 8 | b1)*100/16;
-//uBit.serial.printf("1: %d\n",b1);
-//uBit.serial.printf("2: %d\n",b2);
-    return temp;
-}
+  //%
+  uint16_t Temperature() {
+      init();
+      writeByte(0xCC);
+      convert();
+      init();
+      writeByte(0xCC);
+      writeByte(0xBE);
+      int b1 = readByte();
+      int b2 = readByte();
+      uint16_t temp = (b2 << 8 | b1)*100/16;
+  //uBit.serial.printf("1: %d\n",b1);
+  //uBit.serial.printf("2: %d\n",b2);
+      return temp;
+  }
 }
 /*
 int main() {
