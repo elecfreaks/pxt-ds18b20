@@ -18,8 +18,8 @@
 using namespace pxt;
 
 namespace DS1820 {
-    MicroBitPin WritePin = uBit.io.P12;
-    MicroBitPin ReadPin = uBit.io.P13;
+    MicroBitPin WritePin = uBit.io.P2;
+    MicroBitPin ReadPin = uBit.io.P1;
 
     uint8_t init() {
         WritePin.setDigitalValue(0);
