@@ -13,10 +13,8 @@
 
 #include "pxt.h"
 #include <cstdint>
-
-using namespace pxt;
-
 #include <math.h>
+
 #define IO_STATUS_DIGITAL_IN                0x01        // Pin is configured as a digital input, with no pull up.
 #define IO_STATUS_DIGITAL_OUT               0x02        // Pin is configured as a digital output
 #define IO_STATUS_ANALOG_IN                 0x04        // Pin is Analog in
@@ -24,7 +22,9 @@ using namespace pxt;
 #define IO_STATUS_TOUCH_IN                  0x10        // Pin is a makey-makey style touch sensor
 #define IO_STATUS_EVENT_ON_EDGE             0x20        // Pin will generate events on pin change
 #define IO_STATUS_EVENT_PULSE_ON_EDGE       0x40        // Pin will generate events on pin change
+using namespace pxt;
 
+namespace DS1820 {
 class microbitp : public MicroBitComponent
 {
   public:
@@ -53,7 +53,7 @@ class microbitp : public MicroBitComponent
         this->pin = NULL;
         this->status = 0;
     }
-/*
+
     int setDigitalValue(int value){
         // Check if this pin has a digital mode...
         if(!(0x02 & capability))
@@ -95,7 +95,7 @@ class microbitp : public MicroBitComponent
 
         return ((DigitalIn *)pin)->read();
     }
-    */
+    
 };
 
     MicroBitPin WritePin = uBit.io.P2;
