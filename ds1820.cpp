@@ -37,7 +37,7 @@ class microbitp : public MicroBitComponent
         this->status = 0x00;
         this->pin = NULL;
     }
-/*
+
     void disconnect(){
         if (status & IO_STATUS_DIGITAL_IN)
             delete ((DigitalIn *)pin);
@@ -56,7 +56,7 @@ class microbitp : public MicroBitComponent
         this->pin = NULL;
         this->status = 0;
     }
-
+/*
     int setDigitalValue(int value){
         // Check if this pin has a digital mode...
         if(!(PIN_CAPABILITY_DIGITAL_OUT & capability))
