@@ -18,8 +18,8 @@
 using namespace pxt;
 
 namespace DS1820 {
-  
-
+class microbitp : public MicroBitComponent{};
+/*
 class microbitp : public MicroBitComponent
 {
   public:
@@ -99,7 +99,7 @@ class microbitp : public MicroBitComponent
         return ((DigitalIn *)pin)->read();
     }
 };
-
+*/
     MicroBitPin WritePin = uBit.io.P2;
     MicroBitPin ReadPin = uBit.io.P1;
 
