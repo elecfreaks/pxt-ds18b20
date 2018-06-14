@@ -10,7 +10,7 @@
 * This code is released under the [MIT License](http://opensource.org/licenses/MIT).
 * Distributed as-is; no warranty is given.
 */
-
+/*
 #include "pxt.h"
 #include <cstdint>
 #include <math.h>
@@ -22,6 +22,7 @@
 #define IO_STATUS_TOUCH_IN                  0x10        // Pin is a makey-makey style touch sensor
 #define IO_STATUS_EVENT_ON_EDGE             0x20        // Pin will generate events on pin change
 #define IO_STATUS_EVENT_PULSE_ON_EDGE       0x40        // Pin will generate events on pin change
+*/
 using namespace pxt;
 
 namespace DS1820 {
@@ -105,9 +106,9 @@ class microbitp : public MicroBitComponent
 //    MicroBitPin pin1 = uBit.io.P1;
     MicroBit uBit;
 
-    microbitp  pin0(7, 3, 15);
+//    microbitp  pin0(7, 3, 15);
     microbitp  pin1(8, 2, 15);
-    microbitp  pin2(9, 1, 15);
+//    microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
         pin1.setDigitalValue(0);
