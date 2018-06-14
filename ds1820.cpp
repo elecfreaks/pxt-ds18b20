@@ -14,15 +14,7 @@
 #include "pxt.h"
 #include <cstdint>
 #include <math.h>
-/*
-#define IO_STATUS_DIGITAL_IN                0x01        // Pin is configured as a digital input, with no pull up.
-#define IO_STATUS_DIGITAL_OUT               0x02        // Pin is configured as a digital output
-#define IO_STATUS_ANALOG_IN                 0x04        // Pin is Analog in
-#define IO_STATUS_ANALOG_OUT                0x08        // Pin is Analog out
-#define IO_STATUS_TOUCH_IN                  0x10        // Pin is a makey-makey style touch sensor
-#define IO_STATUS_EVENT_ON_EDGE             0x20        // Pin will generate events on pin change
-#define IO_STATUS_EVENT_PULSE_ON_EDGE       0x40        // Pin will generate events on pin change
-*/
+
 using namespace pxt;
 
 namespace DS1820 {
@@ -47,9 +39,9 @@ class microbitp : public MicroBitComponent
     }
 
     void disconnect(){
-        if (status & IO_STATUS_DIGITAL_IN)
+        if (status & 0x01)
             delete ((DigitalIn *)pin);
-        if (status & IO_STATUS_DIGITAL_OUT)
+        if (status & 0x02)
             delete ((DigitalOut *)pin);
         this->pin = NULL;
         this->status = 0;
@@ -66,10 +58,10 @@ class microbitp : public MicroBitComponent
             return -1001;
 
         // Move into a Digital input state if necessary.
-        if (!(status & IO_STATUS_DIGITAL_OUT)){
+        if (!(status & 0x02)){
             disconnect();
             pin = new DigitalOut(name);
-            status |= IO_STATUS_DIGITAL_OUT;
+            status |= 0x02;
         }
 
         // Write the value.
@@ -86,15 +78,15 @@ class microbitp : public MicroBitComponent
             return -1002;
 
         // Move into a Digital input state if necessary.
-        if (!(status & (IO_STATUS_DIGITAL_IN | IO_STATUS_EVENT_ON_EDGE | IO_STATUS_EVENT_PULSE_ON_EDGE)))
+        if (!(status & (0x01 | 0x20 | 0x40)))
         {
 //            disconnect();
 //            pin = new DigitalIn(name, (PinMode)pullMode);
         ((DigitalIn *)pin)->mode(PullNone);
-            status |= IO_STATUS_DIGITAL_IN;
+            status |= 0x01;
         }
 
-        if(status & (IO_STATUS_EVENT_ON_EDGE | IO_STATUS_EVENT_PULSE_ON_EDGE))
+        if(status & (0x20 | 0x40))
             return ((TimedInterruptIn *)pin)->read();
 
         return ((DigitalIn *)pin)->read();
@@ -107,7 +99,7 @@ class microbitp : public MicroBitComponent
     MicroBit uBit;
 
 //    microbitp  pin0(7, 3, 15);
-    microbitp  pin1(8, 2, 15);
+//    microbitp  pin1(8, 2, 15);
 //    microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
