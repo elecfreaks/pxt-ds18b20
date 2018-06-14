@@ -97,8 +97,8 @@ class microbitp : public MicroBitComponent
     }
     
 };
-//    MicroBitPin WritePin = uBit.io.P2;
-//    MicroBitPin ReadPin = uBit.io.P1;
+//    MicroBitPin pin1 = uBit.io.P2;
+//    MicroBitPin pin1 = uBit.io.P1;
     MicroBit uBit;
 
     microbitp  pin0(7, 3, 15);
@@ -106,26 +106,26 @@ class microbitp : public MicroBitComponent
     microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
-        WritePin.setDigitalValue(0);
+        pin1.setDigitalValue(0);
         for (volatile uint16_t i = 0; i < 600; i++);
-        WritePin.setDigitalValue(1);
+        pin1.setDigitalValue(1);
         for (volatile uint8_t i = 0; i < 30; i++);
-        int b = ReadPin.getDigitalValue();
+        int b = pin1.getDigitalValue();
         for (volatile uint16_t i = 0; i < 600; i++);
         return b;
     }
 
     void sendZero() {
-        WritePin.setDigitalValue(0);
+        pin1.setDigitalValue(0);
         for (volatile uint8_t i = 1; i < 75; i++);
-        WritePin.setDigitalValue(1);
+        pin1.setDigitalValue(1);
         for (volatile uint8_t i = 1; i < 6; i++);
     }
 
     void sendOne() {
-        WritePin.setDigitalValue(0);
+        pin1.setDigitalValue(0);
         for (volatile uint8_t i = 1; i < 1; i++);
-        WritePin.setDigitalValue(1);
+        pin1.setDigitalValue(1);
         for (volatile uint8_t i = 1; i < 80; i++);
     }
 
@@ -138,9 +138,9 @@ class microbitp : public MicroBitComponent
             delay1 = 75;
             delay2 = 6;
         }
-        WritePin.setDigitalValue(0);
+        pin1.setDigitalValue(0);
         for (uint8_t i = 1; i < delay1; i++);
-        WritePin.setDigitalValue(1);
+        pin1.setDigitalValue(1);
         for (uint8_t i = 1; i < delay2; i++);
     }
 
@@ -169,10 +169,10 @@ class microbitp : public MicroBitComponent
 
     int readBit() {
         volatile int i;
-        WritePin.setDigitalValue(0);
-        WritePin.setDigitalValue(1);
+        pin1.setDigitalValue(0);
+        pin1.setDigitalValue(1);
         for (i = 1; i < 20; i++);
-        int b = ReadPin.getDigitalValue();
+        int b = pin1.getDigitalValue();
         for (i = 1; i < 60; i++);
         return b;
     }
