@@ -30,12 +30,12 @@ class microbitp : public MicroBitComponent
     
     microbitp(int id, PinName name, PinCapability capability){
         //set mandatory attributes
-        this->id = id;
+        /*this->id = id;
         this->name = name;
         this->capability = capability;
         this->pullMode = MICROBIT_DEFAULT_PULLMODE;
         this->status = 0x00;
-        this->pin = NULL;
+        this->pin = NULL;*/
     }
 /*
     void disconnect(){
