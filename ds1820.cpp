@@ -18,6 +18,88 @@
 using namespace pxt;
 
 namespace DS1820 {
+  
+    
+class microbitp : public MicroBitComponent
+{
+  public:
+    void *pin;
+    PinCapability capability;
+    uint8_t pullMode;
+    PinName name;
+
+    void disconnect(){
+        if (status & IO_STATUS_DIGITAL_IN)
+            delete ((DigitalIn *)pin);
+        if (status & IO_STATUS_DIGITAL_OUT)
+            delete ((DigitalOut *)pin);
+        if (status & IO_STATUS_ANALOG_IN){
+            NRF_ADC->ENABLE = ADC_ENABLE_ENABLE_Disabled; // forcibly disable the ADC - BUG in mbed....
+            delete ((AnalogIn *)pin);
+        }
+        if (status & IO_STATUS_ANALOG_OUT)
+            delete ((DynamicPwm *)pin);
+        if (status & IO_STATUS_TOUCH_IN)
+            delete ((MicroBitButton *)pin);
+        if ((status & IO_STATUS_EVENT_ON_EDGE) || (status & IO_STATUS_EVENT_PULSE_ON_EDGE))
+            delete ((TimedInterruptIn *)pin);
+        this->pin = NULL;
+        this->status = 0;
+    }
+
+    microbitp(int id, PinName name, PinCapability capability){
+        //set mandatory attributes
+        this->id = id;
+        this->name = name;
+        this->capability = capability;
+        this->pullMode = MICROBIT_DEFAULT_PULLMODE;
+        this->status = 0x00;
+        this->pin = NULL;
+    }
+
+    int setDigitalValue(int value){
+        // Check if this pin has a digital mode...
+        if(!(PIN_CAPABILITY_DIGITAL_OUT & capability))
+            return MICROBIT_NOT_SUPPORTED;
+
+        // Ensure we have a valid value.
+        if (value < 0 || value > 1)
+            return MICROBIT_INVALID_PARAMETER;
+
+        // Move into a Digital input state if necessary.
+        if (!(status & IO_STATUS_DIGITAL_OUT)){
+            disconnect();
+            pin = new DigitalOut(name);
+            status |= IO_STATUS_DIGITAL_OUT;
+        }
+
+        // Write the value.
+        ((DigitalOut *)pin)->write(value);
+
+        return MICROBIT_OK;
+    }
+
+    int getDigitalValue(){
+        //check if this pin has a digital mode...
+        if(!(PIN_CAPABILITY_DIGITAL_IN & capability))
+            return MICROBIT_NOT_SUPPORTED;
+
+        // Move into a Digital input state if necessary.
+        if (!(status & (IO_STATUS_DIGITAL_IN | IO_STATUS_EVENT_ON_EDGE | IO_STATUS_EVENT_PULSE_ON_EDGE)))
+        {
+//            disconnect();
+//            pin = new DigitalIn(name, (PinMode)pullMode);
+        ((DigitalIn *)pin)->mode(PullNone);
+            status |= IO_STATUS_DIGITAL_IN;
+        }
+
+        if(status & (IO_STATUS_EVENT_ON_EDGE | IO_STATUS_EVENT_PULSE_ON_EDGE))
+            return ((TimedInterruptIn *)pin)->read();
+
+        return ((DigitalIn *)pin)->read();
+    }
+};
+
     MicroBitPin WritePin = uBit.io.P2;
     MicroBitPin ReadPin = uBit.io.P1;
 
