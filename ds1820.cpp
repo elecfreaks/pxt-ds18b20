@@ -25,7 +25,6 @@
 
 using namespace pxt;
 
-namespace DS1820 {
 class microbitp : public MicroBitComponent
 {
   public:
@@ -51,28 +50,18 @@ class microbitp : public MicroBitComponent
             delete ((DigitalIn *)pin);
         if (status & IO_STATUS_DIGITAL_OUT)
             delete ((DigitalOut *)pin);
-        if (status & IO_STATUS_ANALOG_IN){
-            NRF_ADC->ENABLE = ADC_ENABLE_ENABLE_Disabled; // forcibly disable the ADC - BUG in mbed....
-            delete ((AnalogIn *)pin);
-        }
-        if (status & IO_STATUS_ANALOG_OUT)
-            delete ((DynamicPwm *)pin);
-        if (status & IO_STATUS_TOUCH_IN)
-            delete ((MicroBitButton *)pin);
-        if ((status & IO_STATUS_EVENT_ON_EDGE) || (status & IO_STATUS_EVENT_PULSE_ON_EDGE))
-            delete ((TimedInterruptIn *)pin);
         this->pin = NULL;
         this->status = 0;
     }
 /*
     int setDigitalValue(int value){
         // Check if this pin has a digital mode...
-        if(!(PIN_CAPABILITY_DIGITAL_OUT & capability))
-            return MICROBIT_NOT_SUPPORTED;
+        if(!(0x02 & capability))
+            return -1002;
 
         // Ensure we have a valid value.
         if (value < 0 || value > 1)
-            return MICROBIT_INVALID_PARAMETER;
+            return -1001;
 
         // Move into a Digital input state if necessary.
         if (!(status & IO_STATUS_DIGITAL_OUT)){
@@ -84,13 +73,13 @@ class microbitp : public MicroBitComponent
         // Write the value.
         ((DigitalOut *)pin)->write(value);
 
-        return MICROBIT_OK;
+        return 0;
     }
 
     int getDigitalValue(){
         //check if this pin has a digital mode...
-        if(!(PIN_CAPABILITY_DIGITAL_IN & capability))
-            return MICROBIT_NOT_SUPPORTED;
+        if(!(0x01 & capability))
+            return -1002;
 
         // Move into a Digital input state if necessary.
         if (!(status & (IO_STATUS_DIGITAL_IN | IO_STATUS_EVENT_ON_EDGE | IO_STATUS_EVENT_PULSE_ON_EDGE)))
