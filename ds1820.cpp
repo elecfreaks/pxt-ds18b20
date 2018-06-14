@@ -28,15 +28,15 @@ class microbitp : public MicroBitComponent
     uint8_t pullMode;
     PinName name;
     
-    /*microbitp(int id, PinName name, PinCapability capability){
+    microbitp(int id, PinName name, PinCapability capability){
         //set mandatory attributes
         this->id = id;
         this->name = name;
         this->capability = capability;
-        /*this->pullMode = MICROBIT_DEFAULT_PULLMODE;
+        this->pullMode = 1;
         this->status = 0x00;
         this->pin = NULL;
-    }*/
+    }
 /*
     void disconnect(){
         if (status & IO_STATUS_DIGITAL_IN)
