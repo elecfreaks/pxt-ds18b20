@@ -97,9 +97,13 @@ class microbitp : public MicroBitComponent
     }
     
 };
+//    MicroBitPin WritePin = uBit.io.P2;
+//    MicroBitPin ReadPin = uBit.io.P1;
+    MicroBit uBit;
 
-    MicroBitPin WritePin = uBit.io.P2;
-    MicroBitPin ReadPin = uBit.io.P1;
+    microbitp  pin0(7, 3, 15);
+    microbitp  pin1(8, 2, 15);
+    microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
         WritePin.setDigitalValue(0);
