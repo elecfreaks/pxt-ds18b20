@@ -22,9 +22,12 @@ class microbitp : public MicroBitComponent
 {
   public:
     void *pin;
+    int id;
+    int status;
     PinCapability capability;
     uint8_t pullMode;
     PinName name;
+    
     microbitp(int id, PinName name, PinCapability capability){
         //set mandatory attributes
         this->id = id;
