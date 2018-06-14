@@ -99,7 +99,7 @@ class microbitp : public MicroBitComponent
     MicroBit uBit;
 
 //    microbitp  pin0(7, 3, 15);
-//    microbitp  pin1(8, 2, 15);
+    microbitp  pin1(8, 2, 15);
 //    microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
