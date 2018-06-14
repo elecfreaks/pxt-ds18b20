@@ -5,7 +5,7 @@
 #include "pxt.h"
 using namespace pxt;
 namespace DS1820 {
-  
+/*
 class microbitp : public MicroBitComponent
 {
   public:
@@ -86,12 +86,12 @@ class microbitp : public MicroBitComponent
     }
 };
 
-
+*/
   MicroBit uBit;
-  microbitp  pin0(7, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
-  microbitp  pin1(8, MICROBIT_PIN_P1, PIN_CAPABILITY_ALL);
-  microbitp  pin2(9, MICROBIT_PIN_P2, PIN_CAPABILITY_ALL);
-
+//  microbitp  pin0(7, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
+//  microbitp  pin1(8, MICROBIT_PIN_P1, PIN_CAPABILITY_ALL);
+//  microbitp  pin2(9, MICROBIT_PIN_P2, PIN_CAPABILITY_ALL);
+MicroBitPin pin1 = uBit.io.P1;
 
   uint8_t init() {
       pin1.setDigitalValue(0);
