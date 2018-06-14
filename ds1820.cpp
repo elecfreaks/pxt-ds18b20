@@ -10,11 +10,11 @@
 * This code is released under the [MIT License](http://opensource.org/licenses/MIT).
 * Distributed as-is; no warranty is given.
 */
-/*
+
 #include "pxt.h"
 #include <cstdint>
 #include <math.h>
-
+/*
 #define IO_STATUS_DIGITAL_IN                0x01        // Pin is configured as a digital input, with no pull up.
 #define IO_STATUS_DIGITAL_OUT               0x02        // Pin is configured as a digital output
 #define IO_STATUS_ANALOG_IN                 0x04        // Pin is Analog in
