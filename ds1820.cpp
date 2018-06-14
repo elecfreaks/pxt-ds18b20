@@ -25,6 +25,15 @@ class microbitp : public MicroBitComponent
     PinCapability capability;
     uint8_t pullMode;
     PinName name;
+    microbitp(int id, PinName name, PinCapability capability){
+        //set mandatory attributes
+        this->id = id;
+        this->name = name;
+        this->capability = capability;
+        this->pullMode = MICROBIT_DEFAULT_PULLMODE;
+        this->status = 0x00;
+        this->pin = NULL;
+    }
 /*
     void disconnect(){
         if (status & IO_STATUS_DIGITAL_IN)
@@ -43,16 +52,6 @@ class microbitp : public MicroBitComponent
             delete ((TimedInterruptIn *)pin);
         this->pin = NULL;
         this->status = 0;
-    }
-
-    microbitp(int id, PinName name, PinCapability capability){
-        //set mandatory attributes
-        this->id = id;
-        this->name = name;
-        this->capability = capability;
-        this->pullMode = MICROBIT_DEFAULT_PULLMODE;
-        this->status = 0x00;
-        this->pin = NULL;
     }
 
     int setDigitalValue(int value){
