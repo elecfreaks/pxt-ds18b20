@@ -55,6 +55,7 @@ class microbitp : public MicroBitComponent
     }
 
     int setDigitalValue(int value){
+      /*
         // Check if this pin has a digital mode...
         if(!(0x02 & capability))
             return -1002;
@@ -74,9 +75,11 @@ class microbitp : public MicroBitComponent
         ((DigitalOut *)pin)->write(value);
 
         return 0;
+        */
     }
 
     int getDigitalValue(){
+      /*
         //check if this pin has a digital mode...
         if(!(0x01 & capability))
             return -1002;
@@ -94,6 +97,7 @@ class microbitp : public MicroBitComponent
             return ((TimedInterruptIn *)pin)->read();
 
         return ((DigitalIn *)pin)->read();
+        */return 0;
     }
     
 };
