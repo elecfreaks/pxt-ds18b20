@@ -29,4 +29,14 @@ namespace DS1820 {
         // Fake function for simulator
         return 0
     }
+    
+    //% weight=10 blockId="DS1820_Temperature" 
+    //% shim=DS1820::Temp
+    //% block="Temp(C)"
+    export function Temp(): any {
+        var temp = Temperature()
+        var data1 = (temp/100).toString
+        return data1.toString
+        }
+    }
 }
