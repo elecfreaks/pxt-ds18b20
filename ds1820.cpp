@@ -38,13 +38,13 @@ class microbitp : public MicroBitComponent
         this->pin = NULL;
     }
 
-    void disconnect(){
+    void disconnect(){/*
         if (status & 0x01)
             delete ((DigitalIn *)pin);
         if (status & 0x02)
             delete ((DigitalOut *)pin);
         this->pin = NULL;
-        this->status = 0;
+        this->status = 0;*/
     }
 
     int setDigitalValue(int value){
