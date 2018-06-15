@@ -29,7 +29,6 @@ class microbitp : public MicroBitComponent
     PinName name;
     
     microbitp(int id, PinName name, PinCapability capability){
-        //set mandatory attributes
         this->id = id;
         this->name = name;
         this->capability = capability;
@@ -37,18 +36,18 @@ class microbitp : public MicroBitComponent
         this->status = 0x00;
         this->pin = NULL;
     }
-
-    void disconnect(){/*
+/*
+    void disconnect(){
         if (status & 0x01)
             delete ((DigitalIn *)pin);
         if (status & 0x02)
             delete ((DigitalOut *)pin);
         this->pin = NULL;
-        this->status = 0;*/
+        this->status = 0;
     }
 
     int setDigitalValue(int value){
-      /*
+      
         // Check if this pin has a digital mode...
         if(!(0x02 & capability))
             return -1002;
@@ -68,11 +67,11 @@ class microbitp : public MicroBitComponent
         ((DigitalOut *)pin)->write(value);
 
         return 0;
-        */
+        
     }
 
     int getDigitalValue(){
-      /*
+      
         //check if this pin has a digital mode...
         if(!(0x01 & capability))
             return -1002;
@@ -90,16 +89,16 @@ class microbitp : public MicroBitComponent
             return ((TimedInterruptIn *)pin)->read();
 
         return ((DigitalIn *)pin)->read();
-        */return 0;
-    }
+        return 0;
+    }*/
     
 };
-//    MicroBitPin pin1 = uBit.io.P2;
+    MicroBitPin pin1 = uBit.io.P2;
 //    MicroBitPin pin1 = uBit.io.P1;
     MicroBit uBit;
 
 //    microbitp  pin0(7, 3, 15);
-    microbitp  pin1(8, 2, 15);
+    microbitp  pin0(8, 2, 15);
 //    microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
