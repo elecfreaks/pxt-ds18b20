@@ -37,7 +37,7 @@ namespace DS1820 {
         let temp = Temperature();
         let x = (temp / 100)
         let y = (temp % 100)
-        let z
+        let z = ''
         if((y < 10)&&(y >= 0)){
             z = x.toString() + '.0' + y.toString()
         }
