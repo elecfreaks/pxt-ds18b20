@@ -22,17 +22,15 @@ namespace DS1820 {
      *temperature in hundreths of a degree centigrade. 
      * block="Temperature(C)"
      */
-    //% weight=10 blockId="DS1820_Temp" 
+
     //% shim=DS1820::Temperature
-    //% block="Temperature(C)"
     export function Temperature(): number {
         // Fake function for simulator
         return 0
     }
     
     //% weight=10 blockId="DS1820_Temperature" 
-    //% shim=DS1820::Temp
-    //% block="Temp(C)"
+    //% block="Temperature(C)"
     export function Temp() : string{
         let temp = Temperature();
         let x = (temp / 100)
