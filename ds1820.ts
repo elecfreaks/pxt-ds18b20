@@ -33,10 +33,9 @@ namespace DS1820 {
     //% weight=10 blockId="DS1820_Temperature" 
     //% shim=DS1820::Temp
     //% block="Temp(C)"
-    export function Temp() {
-        var temp = Temperature()
-        var data1 = (temp/100).toString
-        return data1.toString
-        }
+    export function Temp() : string{
+        var temp = Temperature();
+        var data1 = (temp/100).toString();
+        return data1
     }
 }
