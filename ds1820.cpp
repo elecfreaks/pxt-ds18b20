@@ -27,7 +27,7 @@ class microbitp : public MicroBitComponent
     PinCapability capability;
     uint8_t pullMode;
     PinName name;
-/*
+
     microbitp(int id, PinName name, PinCapability capability){
         this->id = id;
         this->name = name;
@@ -36,8 +36,8 @@ class microbitp : public MicroBitComponent
         this->status = 0x00;
         this->pin = NULL;
     }
-
-    void disconnect(){
+/*
+    void disconnect(){ 
         if (status & 0x01)
             delete ((DigitalIn *)pin);
         if (status & 0x02)
@@ -49,22 +49,23 @@ class microbitp : public MicroBitComponent
     int setDigitalValue(int value){
         // Move into a Digital input state if necessary.
         if (!(status & 0x02)){
-            disconnect();
-            pin = new DigitalOut(name);
+//            disconnect();
+//            pin = new DigitalOut(name);
             status |= 0x02;
         }
         // Write the value.
-        ((DigitalOut *)pin)->write(value);
+//        ((DigitalOut *)pin)->write(value);
         return 0;
     }
 
     int getDigitalValue(){
         if (!(status & (0x01 | 0x20 | 0x40)))
         {
-            ((DigitalIn *)pin)->mode(PullNone);
+//            ((DigitalIn *)pin)->mode(PullNone);
             status |= 0x01;
         }
-        return ((DigitalIn *)pin)->read();
+//        return ((DigitalIn *)pin)->read();
+          return 0;
     }*/
 };
     
