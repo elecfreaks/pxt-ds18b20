@@ -50,11 +50,11 @@ class microbitp : public MicroBitComponent
         // Move into a Digital input state if necessary.
         if (!(status & 0x02)){
             disconnect();
-//            pin = new DigitalOut(name);
+            pin = new DigitalOut(name);
             status |= 0x02;
         }
         // Write the value.
-//        ((DigitalOut *)pin)->write(value);
+        ((DigitalOut *)pin)->write(value);
         return 0;
     }
 
