@@ -36,7 +36,7 @@ class microbitp : public MicroBitComponent
         this->status = 0x00;
         this->pin = NULL;
     }
-/*
+
     void disconnect(){ 
         if (status & 0x01)
             delete ((DigitalIn *)pin);
@@ -49,7 +49,7 @@ class microbitp : public MicroBitComponent
     int setDigitalValue(int value){
         // Move into a Digital input state if necessary.
         if (!(status & 0x02)){
-//            disconnect();
+            disconnect();
 //            pin = new DigitalOut(name);
             status |= 0x02;
         }
@@ -66,7 +66,7 @@ class microbitp : public MicroBitComponent
         }
 //        return ((DigitalIn *)pin)->read();
           return 0;
-    }*/
+    }
 };
     
 //    MicroBitPin pin1 = uBit.io.P1;
