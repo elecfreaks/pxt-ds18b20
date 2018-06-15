@@ -72,9 +72,9 @@ class microbitp : public MicroBitComponent
     
 //    MicroBitPin pin1 = uBit.io.P1;
 //    MicroBit uBit;
-    MicroBitPin pin1 = uBit.io.P2;
+//    MicroBitPin pin1 = uBit.io.P2;
 //    microbitp  pin0(7, 3, 15);
-//    microbitp  pin0(8, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
+    microbitp  pin1(8, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
 //    microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
