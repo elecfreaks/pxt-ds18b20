@@ -34,8 +34,8 @@ namespace DS1820 {
     //% shim=DS1820::Temp
     //% block="Temp(C)"
     export function Temp() : string{
-        var temp = Temperature();
-        var data1 = (temp/100).toString();
+        let temp = Temperature();
+        let data1 = (temp/100).toString();
         return data1
     }
 }
