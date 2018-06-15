@@ -41,7 +41,7 @@ namespace DS1820 {
         if((y < 10)&&(y >= 0)){
             z = x.toString() + '.0' + y.toString()
         }
-        else if(y > 10){
+        else if(y >= 10){
             z = x.toString() + '.' + y.toString()
         }
         else if((y > -10)&&(y < 0)){
