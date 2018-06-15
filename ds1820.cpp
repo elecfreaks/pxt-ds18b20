@@ -38,7 +38,7 @@ class microbitp : public MicroBitComponent
         this->pin = NULL;
     }
 
-    void disconnect(){ 
+    /*void disconnect(){ 
         if (status & 0x01)
             delete ((DigitalIn *)pin);
         if (status & 0x02)
@@ -67,7 +67,7 @@ class microbitp : public MicroBitComponent
         }
         return ((DigitalIn *)pin)->read();
 //          return 0;
-    }
+    }*/
 };
     
 //    MicroBitPin pin1 = uBit.io.P1;
