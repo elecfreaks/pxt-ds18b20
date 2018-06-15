@@ -18,7 +18,7 @@
 using namespace pxt;
 
 namespace DS1820 {
-
+/*
 class microbitp : public MicroBitComponent
 {
   public:
@@ -38,7 +38,7 @@ class microbitp : public MicroBitComponent
         this->pin = NULL;
     }
 
-    /*void disconnect(){ 
+    void disconnect(){ 
         if (status & 0x01)
             delete ((DigitalIn *)pin);
         if (status & 0x02)
@@ -67,14 +67,14 @@ class microbitp : public MicroBitComponent
         }
         return ((DigitalIn *)pin)->read();
 //          return 0;
-    }*/
-};
+    }
+};*/
     
 //    MicroBitPin pin1 = uBit.io.P1;
     MicroBit uBit;
     MicroBitPin pin1 = uBit.io.P2;
 //    microbitp  pin0(7, 3, 15);
-    microbitp  pin0(8, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
+//    microbitp  pin0(8, MICROBIT_PIN_P0, PIN_CAPABILITY_ALL);
 //    microbitp  pin2(9, 1, 15);
 
     uint8_t init() {
