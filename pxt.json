@@ -1,7 +1,7 @@
 {
-    "name": "DS1820",
-    "version": "0.0.6",
-    "description": "Jordan Electronics",
+    "name": "DS18B20",
+    "version": "0.0.0",
+    "description": "This library is DS18B20",
     "license": "MIT",
     "dependencies": {
         "core": "*"
@@ -11,10 +11,11 @@
         "ds1820.ts",
         "ds1820.cpp",
         "shims.d.ts",
-        "enums.d.ts"
+        "enums.d.ts",
+        "_locales/zh/ds18b20-strings.json"
     ],
     "testFiles": [
         "tests.ts"
     ],
-    "public": true
+    "public": false
 }
