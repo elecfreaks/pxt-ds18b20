@@ -61,11 +61,11 @@ class microbitp : public MicroBitComponent
     int getDigitalValue(){
         if (!(status & (0x01 | 0x20 | 0x40)))
         {
-//            ((DigitalIn *)pin)->mode(PullNone);
+            ((DigitalIn *)pin)->mode(PullNone);
             status |= 0x01;
         }
-//        return ((DigitalIn *)pin)->read();
-          return 0;
+        return ((DigitalIn *)pin)->read();
+//          return 0;
     }
 };
     
