@@ -35,7 +35,21 @@ namespace DS1820 {
     //% block="Temp(C)"
     export function Temp() : string{
         let temp = Temperature();
-        let data1 = (temp/100).toString();
-        return data1
+        let x = (temp / 100)
+        let y = (temp % 100)
+        let z
+        if((y < 10)&&(y >= 0)){
+            z = x.toString() + '.0' + y.toString()
+        }
+        else if(y > 10){
+            z = x.toString() + '.' + y.toString()
+        }
+        else if((y > -10)&&(y < 0)){
+            z = x.toString() + '.0' + (-y).toString()
+        }
+        else{
+            z = x.toString() + '.' + (-y).toString()
+        }
+        return z
     }
 }
