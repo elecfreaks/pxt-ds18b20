@@ -13,7 +13,7 @@
      * Distributed as-is; no warranty is given.
      */
 
-declare namespace DS18B20 {
+declare namespace DS1820 {
 }
 
 // Auto-generated. Do not edit. Really.
