@@ -12,7 +12,7 @@
 */
 
 //% color=#5042f4 icon="\uf2c9"
-namespace DS1820 {
+namespace DS18B20 {
 
     // Functions for interfacing with the DS1820
 
