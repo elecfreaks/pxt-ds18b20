@@ -8,8 +8,8 @@
     },
     "files": [
         "README.md",
-        "ds18B20.ts",
-        "ds18B20.cpp",
+        "ds18b20.ts",
+        "ds18b20.cpp",
         "shims.d.ts",
         "_locales/zh/ds18b20-strings.json"
     ],
