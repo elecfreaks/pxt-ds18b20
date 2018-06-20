@@ -23,14 +23,12 @@ namespace DS1820 {
      * block="Temperature(C)"
      */
 
-    //% weight=10 blockId="DS1820_Temp" 
     //% shim=DS1820::Temperature
-    //% block="Temperature(C)"
     export function Temperature(): number {
         // Fake function for simulator
         return 0
     }
-/*
+    
     //% weight=10 blockId="DS1820_Temperature" 
     //% block="Temperature(C)"
     export function Temp() : string{
@@ -51,5 +49,5 @@ namespace DS1820 {
             z = x.toString() + '.' + (-y).toString()
         }
         return z
-    }*/
+    }
 }
