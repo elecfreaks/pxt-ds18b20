@@ -21,6 +21,8 @@ Example for JavaScript
 basic.forever(() => {
     serial.writeLine("temp : "+DS18B20.Temp())
     basic.pause(1000)
+    serial.writeValue("temp", DS18B20.Temperature())
+    basic.pause(1000)
 })
 ```
 
