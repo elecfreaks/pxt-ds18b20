@@ -19,7 +19,7 @@ readTemperature<br>
 Example for JavaScript
 ```
 basic.forever(() => {
-    serial.writeLine("temp : "+DS18B20.Temperature())
+    serial.writeLine("temp : "+DS18B20.Temp())
 })
 ```
 
