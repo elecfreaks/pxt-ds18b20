@@ -1,16 +1,3 @@
-/**
-* Jordan Electronics
-* May, 2018
-* Based on Weatherbit code from Sparkfun:
-* https://github.com/sparkfun/pxt-weather-bit
-*
-* Development environment specifics:
-* Written in Microsoft PXT
-*
-* This code is released under the [MIT License](http://opensource.org/licenses/MIT).
-* Distributed as-is; no warranty is given.
-*/
-
 //% color=#5042f4 icon="\uf2c9"
 namespace DS18B20 {
 
@@ -23,18 +10,32 @@ namespace DS18B20 {
      * block="Temperature(C)"
      */
 
+     enum pin {
+       //% block=pin0
+       pin0 = 0,
+       //% block=pin1
+       pin1 = 1,
+       //% block=pin2
+       pin2 = 2
+     }
+     
     //% shim=DS18B20::Temperature
-    //% weight=10 blockId="DS1820_Temperature" 
-    //% block="Temperature_number(C)"
-    export function Temperature(): number {
+    export function Temperature(p: number): number {
         // Fake function for simulator
         return 0
     }
     
-    //% weight=10 blockId="DS1820_Temp" 
-    //% block="Temperature_string(C)"
-    export function Temp() : string{
-        let temp = Temperature();
+    //% weight=10 blockId="Temperature_number" 
+    //% block="Temperature_number |%p"
+    export function Temperature_number(p: pin): number {
+        // Fake function for simulator
+        return Temperature(p)
+    }
+    
+    //% weight=10 blockId="Temperature_string" 
+    //% block="Temperature_string |%p"
+    export function Temperature_string(p: pin) : string{
+        let temp = Temperature(p);
         let x = (temp / 100)
         let y = (temp % 100)
         let z = ''
