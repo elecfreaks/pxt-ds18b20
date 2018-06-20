@@ -13,7 +13,7 @@
 DS18B20 module, support single bus control, read temperature by pin1.
 
 ## Blocks
-readTemperature
+readTemperature<br>
 ![image](https://github.com/mengbishu/pxt-ds18b20/blob/master/image/temp.png)<br>
 
 
