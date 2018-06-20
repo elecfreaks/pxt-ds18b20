@@ -14,7 +14,8 @@ DS18B20 module, support single bus control, read temperature by pin1.
 
 ## Blocks
 readTemperature
-![image](https://github.com/DFRobot/pxt-ds18b20/blob/master/image/temp.png)<br>
+![image](https://github.com/mengbishu/pxt-ds18b20/blob/master/image/temp.png)<br>
+
 
 
 ## License
