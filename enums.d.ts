@@ -1,5 +1,5 @@
 // Auto-generated. Do not edit.
-declare namespace DS1820 {
+declare namespace DS18B20 {
 }
 
 // Auto-generated. Do not edit. Really.

@@ -17,7 +17,7 @@
 
 using namespace pxt;
 
-namespace DS1820 {
+namespace DS18B20 {
 
 class microbitp : public MicroBitComponent
 {

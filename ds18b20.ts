@@ -12,7 +12,7 @@
 */
 
 //% color=#5042f4 icon="\uf2c9"
-namespace DS1820 {
+namespace DS18B20 {
 
     // Functions for interfacing with the DS1820
 
@@ -23,7 +23,7 @@ namespace DS1820 {
      * block="Temperature(C)"
      */
 
-    //% shim=DS1820::Temperature
+    //% shim=DS18B20::Temperature
     export function Temperature(): number {
         // Fake function for simulator
         return 0
