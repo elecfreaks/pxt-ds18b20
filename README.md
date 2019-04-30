@@ -20,8 +20,6 @@ Example for JavaScript
 basic.forever(() => {
     serial.writeValue("temp ", DS18B20.Temperature_number(DS18B20.pin.pin0))
     basic.pause(1000)
-    serial.writeLine("temp : " + DS18B20.Temperature_string(DS18B20.pin.pin0))
-    basic.pause(1000)
 })
 ```
 
