@@ -14,9 +14,6 @@ DS18B20 module, support single bus control, and read temperature.
 ### Read temperature, return a number, makecode do not support floats, so the value is amplifies up to 100 times.
 ![image](https://github.com/DFRobot/pxt-ds18b20/blob/master/image/number.png)<br>
 
-### Read temperature, return a string.
-![image](https://github.com/DFRobot/pxt-ds18b20/blob/master/image/string.png)<br>
-
 ## Example
 Example for JavaScript
 ```
