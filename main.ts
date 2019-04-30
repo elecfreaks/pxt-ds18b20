@@ -43,6 +43,8 @@ namespace DS18B20 {
     //% p.fieldEditor="gridpicker" p.fieldOptions.columns=4
     export function TemperatureNumber(p: pin): number {
         // Fake function for simulator
-        return Temperature(p)
+        let temp = Temperature(p)
+        temp = temp /10
+        return 
     }
 }
