@@ -39,7 +39,8 @@ namespace DS18B20 {
     }
     
     //% weight=10 blockId="Temperature_number" 
-    //% block="Read 18B20 sensor temperature to %pin "
+    //% block="|%p| Temperature_number "
+    //% p.fieldEditor="gridpicker" p.fieldOptions.columns=4
     export function TemperatureNumber(pin: AnalogPin): number {
         // Fake function for simulator
         return Temperature(p)
