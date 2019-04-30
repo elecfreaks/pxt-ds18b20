@@ -39,7 +39,7 @@ namespace DS18B20 {
     }
     
     //% weight=10 blockId="Temperature_number" 
-    //% block="|%p| Temperature_number "
+    //% block="|%p| 18b20_Temperature "
     //% p.fieldEditor="gridpicker" p.fieldOptions.columns=4
     export function TemperatureNumber(p: pin): number {
         // Fake function for simulator
